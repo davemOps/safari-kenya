@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowRight, Compass, Handshake, MapPin, Route, Sparkles } from "lucide-react";
-import { PageHero } from "@/components/hero/PageHero";
+import { HeroSlider } from "@/components/hero/HeroSlider";
 import { SmartImage } from "@/components/ui/SmartImage";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -19,6 +19,7 @@ import { itineraries } from "@/data/itineraries";
 import { articles } from "@/data/journal";
 import { faqs } from "@/data/faqs";
 import { images } from "@/data/images";
+import { heroSlides } from "@/data/hero";
 
 const why = [
   { icon: Compass, t: "Tailor-Made Journeys", d: "Every itinerary starts with your interests, pace and travel style." },
@@ -38,13 +39,9 @@ export default function Home() {
   const featured = featuredDestinationSlugs.map((s) => getDestination(s)!);
   return (
     <>
-      <PageHero full title="Journeys Beyond the Ordinary" eyebrow="Discover Kenya · Kenya • East Africa" image={images.hero} label="Kenya"
-        description="From the open plains of the Maasai Mara to the turquoise waters of the Indian Ocean, discover Kenya through journeys designed around you.">
-        <ButtonLink href="/plan-your-trip">Plan Your Journey</ButtonLink>
-        <ButtonLink href="/destinations" variant="light">Explore Destinations</ButtonLink>
-      </PageHero>
+      <HeroSlider slides={heroSlides} nextSectionId="explore" />
 
-      <section className="mx-auto grid max-w-7xl items-center gap-12 px-5 py-20 md:grid-cols-2 md:px-8 md:py-28">
+      <section id="explore" className="mx-auto grid max-w-7xl scroll-mt-0 items-center gap-12 px-5 py-20 md:grid-cols-2 md:px-8 md:py-28">
         <Reveal><div className="relative aspect-[4/5] overflow-hidden bg-sand/40"><SmartImage src={images.landscape} alt="Kenya landscape" label="Kenya landscape" sizes="(min-width:768px) 50vw, 100vw" /></div></Reveal>
         <Reveal delay={0.1}>
           <p className="mb-4 text-xs uppercase tracking-[0.35em] text-terracotta">Welcome</p>

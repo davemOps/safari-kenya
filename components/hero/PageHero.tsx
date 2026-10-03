@@ -5,7 +5,7 @@ import { Reveal } from "@/components/ui/Reveal";
 
 export function PageHero({ title, eyebrow, description, image, label, full = false, children }: { title: string; eyebrow?: string; description?: string; image: string; label?: string; full?: boolean; children?: ReactNode }) {
   return (
-    <section className={`relative flex items-end overflow-hidden bg-forest ${full ? "min-h-[100svh]" : "min-h-[70svh]"}`}>
+    <section className={`relative flex items-end overflow-hidden bg-black ${full ? "min-h-[100svh]" : "min-h-[70svh]"}`}>
       <SmartImage src={image} alt={`${title} – Kenya`} label={label ?? title} priority sizes="100vw" />
       <div className="absolute inset-0 bg-gradient-to-t from-charcoal/85 via-charcoal/30 to-charcoal/40" aria-hidden />
       <div className="relative z-10 mx-auto w-full max-w-7xl px-5 pb-24 pt-36 md:px-8 md:pb-28">
