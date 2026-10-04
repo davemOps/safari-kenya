@@ -6,7 +6,7 @@ import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { SmartImage } from "@/components/ui/SmartImage";
 import type { HeroSlide } from "@/data/hero";
 
-const DURATION = 8000; // ms each slide stays before auto-advancing
+const DURATION = 20000; // ms each slide stays before auto-advancing
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 interface Props { slides: HeroSlide[]; nextSectionId?: string }

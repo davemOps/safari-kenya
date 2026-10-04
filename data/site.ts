@@ -4,8 +4,8 @@ export const site = {
   tagline: "Journeys Beyond the Ordinary",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.example.com",
   email: "hello@example.com",
-  phone: "+254 XXX XXX XXX",
-  whatsappNumber: "254000000000", // digits only, international format
+  phone: "+254 707 365 348",
+  whatsappNumber: "254707365348", // digits only, international format
   location: "Nairobi, Kenya",
   social: {
     Instagram: "https://www.instagram.com/",
