@@ -31,5 +31,6 @@ export const images = {
     bestTimeKenya: jr("best-time-kenya"), kenyaSafariGuide: jr("kenya-safari-guide"), weekendGetaways: jr("weekend-getaways"),
     nanyukiGuide: jr("nanyuki-guide"), kenyaCoast: jr("kenya-coast"), thingsToDoKenya: jr("things-to-do-kenya"),
   },
+  intro: { videoPoster: "/images/intro-video-poster.jpg", photo: "/images/intro-photo.jpg", video: "/videos/intro.mp4" },
   about: { ourStory: ab("our-story"), localExperience: ab("local-experience"), responsibleTravel: ab("responsible-travel") },
 } as const;

@@ -19,6 +19,7 @@ import { itineraries } from "@/data/itineraries";
 import { articles } from "@/data/journal";
 import { faqs } from "@/data/faqs";
 import { images } from "@/data/images";
+import { IntroSection } from "@/components/home/IntroSection";
 import { heroSlides } from "@/data/hero";
 
 const why = [
@@ -40,19 +41,9 @@ export default function Home() {
   return (
     <>
       <HeroSlider slides={heroSlides} nextSectionId="explore" />
+      <IntroSection />
 
-      <section id="explore" className="mx-auto grid max-w-7xl scroll-mt-0 items-center gap-12 px-5 py-20 md:grid-cols-2 md:px-8 md:py-28">
-        <Reveal><div className="relative aspect-[4/5] overflow-hidden bg-sand/40"><SmartImage src={images.landscape} alt="Kenya landscape" label="Kenya landscape" sizes="(min-width:768px) 50vw, 100vw" /></div></Reveal>
-        <Reveal delay={0.1}>
-          <p className="mb-4 text-xs uppercase tracking-[0.35em] text-terracotta">Welcome</p>
-          <h2 className="text-4xl text-forest md:text-6xl">Kenya, Your Way</h2>
-          <p className="mt-6 text-xl leading-relaxed text-charcoal/80">No two travelers want the same Kenya. Some come for the wildlife, others for mountain air, coastal calm or a deeper look at local culture.</p>
-          <p className="mt-4 text-xl leading-relaxed text-charcoal/80">We design each journey around your interests, your pace and the people you travel with, so the trip feels like yours from the first conversation to the last sunset.</p>
-          <div className="mt-8"><ButtonLink href="/about" variant="outline" arrow>Our Approach</ButtonLink></div>
-        </Reveal>
-      </section>
-
-      <section className="bg-forest py-20 md:py-28">
+      <section className="bg-black py-20 md:py-28">
         <div className="mx-auto max-w-7xl px-5 md:px-8">
           <SectionHeading light eyebrow="Why Travel With Us" title="Travel, Thoughtfully Designed" />
           <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
