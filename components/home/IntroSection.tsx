@@ -15,7 +15,7 @@ const paragraphs = [
   "Whether this is your first visit or your fifth, tell us what you imagine and we will help turn it into a journey you will remember.",
 ];
 const cta = { label: "Let's Plan Your Trip", href: "/plan-your-trip" };
-const caption = "Add a short caption for your photograph here."; // set to "" to hide
+const caption = "We partner with local communities throughout Africa to take every measure necessary to ensure we affect positive change and enrich lives throughout every journey."; // set to "" to hide
 
 export function IntroSection() {
   const [playing, setPlaying] = useState(false);
