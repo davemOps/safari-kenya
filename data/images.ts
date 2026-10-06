@@ -1,9 +1,9 @@
 // Central image map. Drop your own photo at the path below (same filename) and it appears automatically.
-const dest = (f: string) => `/images/destinations/${f}.jpg`;
-const exp = (f: string) => `/images/experiences/${f}.jpg`;
-const itin = (f: string) => `/images/itineraries/${f}.jpg`;
-const jr = (f: string) => `/images/journal/${f}.jpg`;
-const ab = (f: string) => `/images/about/${f}.jpg`;
+const dest = (f: string) => `/images/${f}.jpg`;
+const exp = (f: string) => `/images/${f}.jpg`;
+const itin = (f: string) => `/images/${f}.jpg`;
+const jr = (f: string) => `/images/${f}.jpg`;
+const ab = (f: string) => `/images/${f}.jpg`;
 
 export const images = {
   hero: "/images/hero-kenya.jpg",
