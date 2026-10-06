@@ -45,8 +45,7 @@ export function InquiryForm() {
           {styles.map((s) => (
             <label key={s} className="cursor-pointer">
               <input type="checkbox" name="styles" value={s} className="peer sr-only" />
-              <span className="block border border-forest/25 bg-white px-4 py-2 transition-colors peer-checked:border-forest peer-checked:bg-forest peer-checked:text-cream peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-terracotta">{s}</span>
-            </label>
+              <span className="block border border-forest/25 bg-white px-4 py-2 transition-colors peer-checked:border-forest peer-checked:bg-forest peer-checked:text-cream peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-terracotta">{s}</span></label>
           ))}
         </div>
       </fieldset>
