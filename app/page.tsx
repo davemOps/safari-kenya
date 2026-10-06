@@ -21,6 +21,7 @@ import { faqs } from "@/data/faqs";
 import { images } from "@/data/images";
 import { IntroSection } from "@/components/home/IntroSection";
 import { heroSlides } from "@/data/hero";
+import { WhySection } from "@/components/home/WhySection";
 
 const why = [
   { icon: Compass, t: "Tailor-Made Journeys", d: "Every itinerary starts with your interests, pace and travel style." },
@@ -43,20 +44,7 @@ export default function Home() {
       <HeroSlider slides={heroSlides} nextSectionId="explore" />
       <IntroSection />
 
-      <section className="bg-black py-20 md:py-28">
-        <div className="mx-auto max-w-7xl px-5 md:px-8">
-          <SectionHeading light eyebrow="Why Travel With Us" title="Travel, Thoughtfully Designed" />
-          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-            {why.map((w, i) => (
-              <Reveal key={w.t} delay={i * 0.08}>
-                <w.icon className="mb-5 h-7 w-7 text-sand" aria-hidden />
-                <h3 className="text-sm uppercase tracking-[0.25em] text-cream">{w.t}</h3>
-                <p className="mt-3 text-lg leading-relaxed text-cream/75">{w.d}</p>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      <WhySection />
 
       <section className="mx-auto max-w-7xl px-5 py-20 md:px-8 md:py-28">
         <SectionHeading eyebrow="Destinations" title="Explore Kenya" sub="From the highlands and Great Rift Valley to the savannah and Indian Ocean coast." />

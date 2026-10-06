@@ -32,5 +32,6 @@ export const images = {
     nanyukiGuide: jr("nanyuki-guide"), kenyaCoast: jr("kenya-coast"), thingsToDoKenya: jr("things-to-do-kenya"),
   },
   intro: { videoPoster: "/images/intro-video-poster.jpg", photo: "/images/intro-photo.jpg", video: "/videos/intro.mp4" },
+  features: { tailorMade: "/images/features/tailor-made.png", localKnowledge: "/images/features/local-knowledge.png", authentic: "/images/features/authentic.png", seamless: "/images/features/seamless.png" },
   about: { ourStory: ab("our-story"), localExperience: ab("local-experience"), responsibleTravel: ab("responsible-travel") },
 } as const;
