@@ -1,38 +1,76 @@
 import Link from "next/link";
-import { Facebook, Instagram, MapPin, Youtube } from "lucide-react";
+import { Facebook, Instagram, Youtube } from "lucide-react";
 import { site } from "@/data/site";
+import { FooterBadge } from "./FooterBadge";
 
-const cols = [
-  { title: "Explore", links: [["Destinations", "/destinations"], ["Experiences", "/experiences"], ["Itineraries", "/itineraries"], ["Journal", "/journal"]] },
-  { title: "Company", links: [["About", "/about"], ["Contact", "/contact"], ["FAQs", "/contact#faq"]] },
-  { title: "Plan", links: [["Plan Your Trip", "/plan-your-trip"], ["Private Tours", "/plan-your-trip"], ["Family Travel", "/experiences/family"], ["Honeymoons", "/experiences/honeymoon"]] },
+// ---- Edit footer links here. Each inner array is one group (a gap is shown between groups). ----
+const exploreGroups = [
+  [["Destinations", "/destinations"], ["Itineraries", "/itineraries"], ["Experiences", "/experiences"]],
+  [["Our Story", "/about"], ["Journal", "/journal"], ["FAQs", "/contact#faq"], ["Contact", "/contact"]],
+  [["Plan Your Trip", "/plan-your-trip"]],
 ];
+const badgeHeading = "Travel With Purpose"; // not an award claim: edit freely
+const badgeText = "Thoughtfully designed journeys across Kenya.";
+
+const heading = "text-lg font-bold uppercase tracking-wide text-[#44453D]";
+const muted = "text-lg text-[#6B6B6B]";
+const social = [
+  { label: "Facebook", href: site.social.Facebook, Icon: Facebook },
+  { label: "Instagram", href: site.social.Instagram, Icon: Instagram },
+  { label: "YouTube", href: site.social.YouTube, Icon: Youtube },
+];
+
 export function Footer() {
   return (
-    <footer className="bg-charcoal text-cream/80">
-      <div className="mx-auto grid max-w-7xl gap-12 px-5 py-16 sm:grid-cols-2 md:px-8 lg:grid-cols-6">
-        <div className="sm:col-span-2">
-          <p className="text-2xl tracking-[0.3em] text-cream">{site.name}</p>
-          <p className="mt-4 max-w-sm text-lg leading-relaxed">Thoughtfully designed journeys across Kenya, from savannah and highlands to the Indian Ocean coast.</p>
-          <p className="mt-6 flex items-center gap-2"><MapPin className="h-4 w-4" aria-hidden />{site.location}</p>
-        </div>
-        {cols.map((c) => (
-          <div key={c.title}>
-            <h2 className="mb-4 text-xs uppercase tracking-[0.3em] text-sand">{c.title}</h2>
-            <ul className="space-y-3">{c.links.map(([l, h]) => <li key={l}><Link href={h} className="transition-colors hover:text-white">{l}</Link></li>)}</ul>
+    <footer>
+      <div className="bg-[#EFEFEF]">
+        <div className="mx-auto grid max-w-6xl gap-12 px-5 py-14 md:grid-cols-3 md:px-8 md:py-16">
+          {/* Left: brand, contact, social */}
+          <div>
+            <h2 className={heading}>{site.name}</h2>
+            <p className={`mt-6 leading-relaxed ${muted}`}>{site.location}</p>
+            <div className={`mt-6 space-y-1 ${muted}`}>
+              <p><a href={`mailto:${site.email}`} className="transition-colors hover:text-charcoal">{site.email}</a></p>
+              <p><a href={`tel:${site.phone.replace(/\s/g, "")}`} className="transition-colors hover:text-charcoal">{site.phone}</a></p>
+            </div>
+            <h2 className={`${heading} mt-10`}>Follow Us</h2>
+            <ul className="mt-5 flex gap-4">
+              {social.map(({ label, href, Icon }) => (
+                <li key={label}>
+                  <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label} className="text-[#7A7A7A] transition-colors hover:text-charcoal">
+                    <Icon className="h-6 w-6" aria-hidden />
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
-        ))}
-        <div>
-          <h2 className="mb-4 text-xs uppercase tracking-[0.3em] text-sand">Follow</h2>
-          <ul className="space-y-3">
-            <li><a href={site.social.Instagram} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-white"><Instagram className="h-4 w-4" aria-hidden />Instagram</a></li>
-            <li><a href={site.social.Facebook} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-white"><Facebook className="h-4 w-4" aria-hidden />Facebook</a></li>
-            <li><a href={site.social.TikTok} target="_blank" rel="noopener noreferrer" className="hover:text-white">TikTok</a></li>
-            <li><a href={site.social.YouTube} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-white"><Youtube className="h-4 w-4" aria-hidden />YouTube</a></li>
-          </ul>
+
+          {/* Middle: explore links */}
+          <nav aria-label="Footer">
+            <h2 className={heading}>Explore</h2>
+            <div className="mt-4 space-y-5">
+              {exploreGroups.map((group, i) => (
+                <ul key={i} className="space-y-1.5">
+                  {group.map(([label, href]) => (
+                    <li key={label}><Link href={href} className={`${muted} transition-colors hover:text-charcoal`}>{label}</Link></li>
+                  ))}
+                </ul>
+              ))}
+            </div>
+          </nav>
+
+          {/* Right: badge */}
+          <div className="text-center">
+            <h2 className="mx-auto max-w-[14rem] text-2xl font-bold uppercase leading-snug tracking-wide text-[#2B2B2B]">{badgeHeading}</h2>
+            <div className="mt-6"><FooterBadge /></div>
+            <p className={`mx-auto mt-6 max-w-[14rem] ${muted}`}>{badgeText}</p>
+          </div>
         </div>
       </div>
-      <div className="border-t border-white/10 px-5 py-6 text-center text-sm text-cream/60">© {new Date().getFullYear()} {site.name}. All rights reserved.</div>
+
+      <div className="bg-[#333333] px-5 py-5 text-center text-sm text-[#9A9A9A]">
+        © {new Date().getFullYear()} {site.name}. All rights reserved.Developed by Dave.
+      </div>
     </footer>
   );
 }

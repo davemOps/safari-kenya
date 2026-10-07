@@ -3,7 +3,7 @@ export const site = {
   name: "SAFARI KENYA",
   tagline: "Journeys Beyond the Ordinary",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.example.com",
-  email: "hello@example.com",
+  email: "info@safaris.com",
   phone: "+254 707 365 348",
   whatsappNumber: "254707365348", // digits only, international format
   location: "Nairobi, Kenya",
