@@ -3,6 +3,7 @@ import "./globals.css";
 import { Navbar } from "@/components/navbar/Navbar";
 import { Footer } from "@/components/footer/Footer";
 import { site } from "@/data/site";
+import { getNav } from "@/lib/nav";
 
 const description = "Tailor-made Kenya tours and safaris: Maasai Mara, Mount Kenya, Nanyuki, Diani, Lamu and more, designed around you.";
 export const metadata: Metadata = {
@@ -20,8 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body>
         <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:bg-white focus:px-4 focus:py-2">Skip to content</a>
-        <Navbar />
-        <main id="main">{children}</main>
+        <Navbar items={getNav()} />        <main id="main">{children}</main>
         <Footer />
       </body>
     </html>
