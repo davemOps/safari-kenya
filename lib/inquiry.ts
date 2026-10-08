@@ -1,12 +1,43 @@
+import emailjs from "@emailjs/browser";
+
 export interface InquiryPayload {
   firstName: string; lastName: string; email: string; phone: string; travelers: string; month: string;
   duration: string; styles: string[]; destinations: string; budget: string; message: string;
 }
+export type InquiryResult = "sent" | "not-configured" | "error";
+
 /**
- * TODO: connect to a backend (e.g. a Next.js route handler that sends via Resend and/or stores in Supabase).
- * Until then this returns { ok: false, connected: false } and the UI says so honestly.
+ * Sends the inquiry to your inbox through EmailJS.
+ * Needs these in .env.local (see .env.local.example):
+ *   NEXT_PUBLIC_EMAILJS_SERVICE_ID, NEXT_PUBLIC_EMAILJS_TEMPLATE_ID, NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
  */
-export async function submitInquiry(payload: InquiryPayload): Promise<{ ok: boolean; connected: boolean }> {
-  void payload;
-  return { ok: false, connected: false };
+export async function submitInquiry(p: InquiryPayload): Promise<InquiryResult> {
+  const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+  const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+  const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+  if (!serviceId || !templateId || !publicKey) return "not-configured";
+
+  // These names must match the {{variables}} in your EmailJS template.
+  const templateParams = {
+    first_name: p.firstName,
+    last_name: p.lastName,
+    full_name: `${p.firstName} ${p.lastName}`.trim(),
+    reply_to: p.email,
+    phone: p.phone || "Not provided",
+    travelers: p.travelers || "Not provided",
+    travel_month: p.month || "Not provided",
+    duration: p.duration || "Not provided",
+    travel_style: p.styles.length ? p.styles.join(", ") : "Not provided",
+    destinations: p.destinations || "Not provided",
+    budget: p.budget || "Not provided",
+    message: p.message || "No message",
+  };
+
+  try {
+    await emailjs.send(serviceId, templateId, templateParams, { publicKey });
+    return "sent";
+  } catch (err) {
+    console.error("EmailJS error:", err);
+    return "error";
+  }
 }
