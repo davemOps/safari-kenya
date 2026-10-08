@@ -1,28 +1,32 @@
 import { Quote } from "lucide-react";
+import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-export interface Testimonial { quote: string; name: string; trip?: string }
-const placeholders = ["Your guest experience will appear here.", "Real traveler testimonials will be added here."];
-/** Pass real testimonials via the `items` prop when you have them. */
-export function Testimonials({ items = [] }: { items?: Testimonial[] }) {
+import { testimonials, type Testimonial } from "@/data/testimonials";
+
+export type { Testimonial };
+
+export function Testimonials({ items = testimonials }: { items?: Testimonial[] }) {
   return (
-    <section className="bg-white py-20 md:py-28">
-      <div className="mx-auto max-w-7xl px-5 md:px-8">
+    <section className="bg-white py-16 md:py-24">
+      <div className="mx-auto max-w-6xl px-5 md:px-8">
         <SectionHeading eyebrow="Guest Stories" title="In Our Travelers' Words" />
-        <div className="grid gap-6 md:grid-cols-2">
-          {items.length > 0
-            ? items.map((t) => (
-                <figure key={t.name} className="border border-sand p-8">
-                  <Quote className="mb-4 h-6 w-6 text-terracotta" aria-hidden />
-                  <blockquote className="text-xl leading-relaxed">{t.quote}</blockquote>
-                  <figcaption className="mt-5 text-sm uppercase tracking-[0.2em] text-forest">{t.name}{t.trip ? ` — ${t.trip}` : ""}</figcaption>
+        <div className="grid gap-6 md:grid-cols-3">
+          {items.map((t, i) => {
+            const filled = t.quote.trim().length > 0;
+            return (
+              <Reveal key={i} delay={i * 0.08}>
+                <figure className={`flex h-full flex-col p-8 md:p-9 ${filled ? "border border-sand/70 bg-cream/60" : "border border-dashed border-sand"}`}>
+                  <Quote className={`h-7 w-7 ${filled ? "text-terracotta" : "text-sand"}`} aria-hidden />
+                  <blockquote className={`mt-5 flex-1 text-xl leading-relaxed ${filled ? "text-charcoal/90" : "italic text-charcoal/45"}`}>
+                    {filled ? t.quote : ""}
+                  </blockquote>
+                  <figcaption className="mt-7 border-t border-sand/70 pt-4 text-sm uppercase tracking-[0.25em] text-forest">
+                    {t.name.trim() || (filled ? "" : "Guest name")}
+                  </figcaption>
                 </figure>
-              ))
-            : placeholders.map((p) => (
-                <div key={p} className="flex min-h-[10rem] flex-col items-center justify-center border border-dashed border-sand p-8 text-center">
-                  <Quote className="mb-4 h-6 w-6 text-sand" aria-hidden />
-                  <p className="text-xl italic text-charcoal/60">{p}</p>
-                </div>
-              ))}
+              </Reveal>
+            );
+          })}
         </div>
       </div>
     </section>
