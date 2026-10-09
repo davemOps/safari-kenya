@@ -6,10 +6,10 @@ import { images } from "@/data/images";
 import { buildMeta } from "@/lib/seo";
 export const metadata = buildMeta({ title: "About Us", description: "About our approach to Kenya travel: personal planning, local expertise and responsible tourism.", path: "/about", image: images.about.ourStory });
 const blocks = [
-  { t: "Our Story", img: images.about.ourStory, p: ["[Placeholder] Tell your company story here: who you are, why you started, and what you love about Kenya.", "Replace this text with your own history once you are ready."] },
+  { t: "Our Story", img: images.about.ourStory, p: ["We focus on combining breathtaking wildlife experiences with luxury accommodations, exclusive tours and authentic interactions that will complement your interests, creating unforgettable and treasured memories.", "We design adventures from the ground up around your goals and needs so you can experience Africa just as you’ve always dreamed."] },
   { t: "Our Approach", img: images.about.localExperience, p: ["We design journeys around the traveler. We start with a conversation about interests, pace and the people travelling together.", "From there we shape an itinerary and refine it together until it feels right."] },
-  { t: "Kenyan Expertise", img: images.about.localExperience, p: ["[Placeholder] Describe your team's local knowledge, guides and regional experience.", "Kenya's regions differ greatly in distance, climate and character, and good planning respects that."] },
-  { t: "Responsible Travel", img: images.about.responsibleTravel, p: ["Travel can support conservation and communities when it is done thoughtfully. We aim to favour operators and experiences that benefit local people and wildlife.", "[Placeholder] Add specific commitments or partnerships here once confirmed."] },
+  // {// t: "Kenyan Expertise", img: images.about.localExperience, p: ["With deep roots in Africa, we offer exclusive, unique opportunities to get involved with conservation efforts and immerse yourself within unfamiliar cultures.", "Kenya's regions differ greatly in distance, climate and character, and good planning respects that."] },
+  { t: "Responsible Travel", img: images.about.responsibleTravel, p: ["Travel can support conservation and communities when it is done thoughtfully. We aim to favour operators and experiences that benefit local people and wildlife.", "We partner with local communities throughout Africa to take every measure necessary to ensure we affect positive change and enrich lives throughout every journey."] },
 ];
 export default function Page() {
   return (
