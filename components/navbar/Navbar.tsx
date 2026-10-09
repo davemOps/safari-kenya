@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { site } from "@/data/site";
 import type { NavItem } from "@/lib/nav";
+import Image from "next/image";
 
 export function Navbar({ items }: { items: NavItem[] }) {
   const pathname = usePathname();
@@ -13,6 +14,7 @@ export function Navbar({ items }: { items: NavItem[] }) {
   const [open, setOpen] = useState(false); // mobile menu
   const [openMenu, setOpenMenu] = useState<string | null>(null); // desktop dropdown
   const [mobileSub, setMobileSub] = useState<string | null>(null); // mobile accordion
+  const [logoFailed, setLogoFailed] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
