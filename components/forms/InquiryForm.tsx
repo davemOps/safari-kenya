@@ -19,7 +19,6 @@ export function InquiryForm() {
     const f = new FormData(form);
     const g = (k: string) => String(f.get(k) ?? "").trim();
 
-    // Honeypot: real visitors never see or fill this field; bots often do.
     if (g("website")) { setStatus("sent"); form.reset(); return; }
 
     const payload: InquiryPayload = {
@@ -65,7 +64,7 @@ export function InquiryForm() {
       <div><label className={label} htmlFor="destinations">Destinations</label><input id="destinations" name="destinations" placeholder="e.g. Maasai Mara, Diani" className={field} /></div>
       <div><label className={label} htmlFor="message">Message</label><textarea id="message" name="message" rows={5} className={field} /></div>
 
-      {/* Honeypot (hidden from people) */}
+
       <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
         <label htmlFor="website">Leave this field empty</label>
         <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />

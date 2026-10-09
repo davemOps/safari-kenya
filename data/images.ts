@@ -1,4 +1,4 @@
-// Central image map. Drop your own photo at the path below (same filename) and it appears automatically.
+
 const dest = (f: string) => `/images/${f}.jpg`;
 const exp = (f: string) => `/images/${f}.jpg`;
 const itin = (f: string) => `/images/${f}.jpg`;

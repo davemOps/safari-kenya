@@ -4,7 +4,6 @@ import { useState } from "react";
 import { PawPrint } from "lucide-react";
 import { images } from "@/data/images";
 
-/** Red circular badge. Put your elephant artwork (white or light, transparent PNG) at public/images/footer/elephant.png */
 export function FooterBadge() {
   const [failed, setFailed] = useState(false);
   return (

@@ -6,7 +6,6 @@ import { articles } from "@/data/journal";
 export interface NavLink { label: string; href: string }
 export interface NavItem extends NavLink { menu?: NavLink[] }
 
-/** Main navigation. Dropdowns are generated from the data files, so new destinations/articles appear automatically. */
 export function getNav(): NavItem[] {
   return [
     { label: "Destinations", href: "/destinations", menu: destinations.map((d) => ({ label: d.name, href: `/destinations/${d.slug}` })) },

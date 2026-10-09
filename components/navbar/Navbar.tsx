@@ -22,13 +22,11 @@ export function Navbar({ items }: { items: NavItem[] }) {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-  // Close everything when the route changes
   useEffect(() => { setOpen(false); setOpenMenu(null); setMobileSub(null); }, [pathname]);
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [open]);
-  // Escape closes dropdown
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setOpenMenu(null); };
     window.addEventListener("keydown", onKey);

@@ -6,7 +6,6 @@ import { Reveal } from "@/components/ui/Reveal";
 import { ButtonLink } from "@/components/ui/Button";
 import { images } from "@/data/images";
 
-// ---- Edit the text here ----
 const heading = "Kenya, Your Way";
 const paragraphs = [
   "No two travelers want the same Kenya. Some come for the wildlife, others for mountain air, coastal calm or a deeper look at local culture.",
@@ -24,7 +23,7 @@ export function IntroSection() {
   return (
     <section id="explore" className="bg-cream py-16 md:py-24">
       <div className="mx-auto grid max-w-6xl gap-10 px-5 md:grid-cols-2 md:gap-14 md:px-8 lg:gap-20">
-        {/* Left: text */}
+
         <Reveal>
           <h2 className="text-3xl uppercase leading-tight tracking-wide text-charcoal md:text-4xl">{heading}</h2>
           <div className="mt-6 space-y-5 text-lg leading-relaxed text-charcoal/85 md:text-xl">
@@ -35,7 +34,6 @@ export function IntroSection() {
           </div>
         </Reveal>
 
-        {/* Right: video + photo + caption */}
         <Reveal delay={0.1}>
           <div className="relative aspect-video overflow-hidden bg-sand/40">
             {playing && !videoFailed ? (

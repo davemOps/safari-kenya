@@ -5,7 +5,6 @@ import { ImageIcon } from "lucide-react";
 import { Reveal } from "@/components/ui/Reveal";
 import { images } from "@/data/images";
 
-// ---- Edit the heading, titles, text and image paths here ----
 const heading = "Travel, Thoughtfully Designed";
 const features = [
   { image: images.features.tailorMade, title: "Tailor-Made Journeys", text: "Every itinerary starts with your interests, your pace and the people you travel with, then we build the trip around you." },

@@ -6,18 +6,13 @@ export interface InquiryPayload {
 }
 export type InquiryResult = "sent" | "not-configured" | "error";
 
-/**
- * Sends the inquiry to your inbox through EmailJS.
- * Needs these in .env.local (see .env.local.example):
- *   NEXT_PUBLIC_EMAILJS_SERVICE_ID, NEXT_PUBLIC_EMAILJS_TEMPLATE_ID, NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
- */
+
 export async function submitInquiry(p: InquiryPayload): Promise<InquiryResult> {
   const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
   const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
   const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
   if (!serviceId || !templateId || !publicKey) return "not-configured";
 
-  // These names must match the {{variables}} in your EmailJS template.
   const templateParams = {
     first_name: p.firstName,
     last_name: p.lastName,

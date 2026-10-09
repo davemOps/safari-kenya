@@ -1,11 +1,11 @@
-// Replace these placeholders with your real company details.
+
 export const site = {
   name: "SAFARI KENYA",
   tagline: "Journeys Beyond the Ordinary",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.example.com",
   email: "info@safaris.com",
   phone: "+254 707 365 348",
-  whatsappNumber: "254707365348", // digits only, international format
+  whatsappNumber: "254707365348",
   location: "Nairobi, Kenya",
   social: {
     Instagram: "https://www.instagram.com/",

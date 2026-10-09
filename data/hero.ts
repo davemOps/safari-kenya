@@ -1,11 +1,10 @@
-// Edit the home page hero here: text, images and buttons for every slide.
-// Add or remove objects to change the number of slides. Replace the files in /public/images/.
+
 export interface HeroSlide {
   image: string;
-  /** Focal point for cropping, e.g. "70% 50%" (x y). Keeps your subject in view on mobile. */
+
   imagePosition?: string;
   imageAlt: string;
-  /** Optional small label. Not shown right now. */
+
   eyebrow?: string;
   title: string;
   description: string;

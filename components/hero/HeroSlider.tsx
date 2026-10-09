@@ -6,7 +6,7 @@ import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { SmartImage } from "@/components/ui/SmartImage";
 import type { HeroSlide } from "@/data/hero";
 
-const DURATION = 20000; // ms each slide stays before auto-advancing
+const DURATION = 20000;
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 interface Props { slides: HeroSlide[]; nextSectionId?: string }
@@ -23,7 +23,6 @@ export function HeroSlider({ slides }: Props) {
   const next = useCallback(() => setIndex((i) => (i + 1) % count), [count]);
   const prev = useCallback(() => setIndex((i) => (i - 1 + count) % count), [count]);
 
-  // Autoplay. Re-runs on every index change, so any manual change restarts the 4s timer.
   useEffect(() => {
     if (reduce || count < 2) return;
     let raf = 0;
@@ -39,7 +38,6 @@ export function HeroSlider({ slides }: Props) {
     return () => cancelAnimationFrame(raf);
   }, [index, count, reduce]);
 
-  // ArrowLeft / ArrowRight while the hero is on screen.
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
@@ -70,7 +68,7 @@ export function HeroSlider({ slides }: Props) {
       onFocusCapture={() => setPaused(true)}
       onBlurCapture={() => setPaused(false)}
     >
-      {/* Backgrounds: stacked and preloaded; the active one crossfades in with a gentle settle. */}
+
       <div className="absolute inset-0 bg-black" aria-hidden>
         {slides.map((s, i) => {
           const active = i === index;
@@ -90,12 +88,11 @@ export function HeroSlider({ slides }: Props) {
         })}
       </div>
 
-      {/* Overlays */}
       <div className="pointer-events-none absolute inset-0 z-[2] bg-black/40" aria-hidden />
       <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-32 bg-gradient-to-b from-black/55 to-transparent" aria-hidden />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-40 bg-gradient-to-t from-black/70 to-transparent" aria-hidden />
 
-      {/* Content (centered) */}
+
       <div className="relative z-10 mx-auto flex h-full max-w-7xl items-center justify-center px-5 pb-28 pt-28 text-center md:px-8 md:pb-24">
         <AnimatePresence mode="wait">
           <motion.div
@@ -120,7 +117,7 @@ export function HeroSlider({ slides }: Props) {
 
       {count > 1 && (
         <>
-          {/* Arrows: far left and far right edges. Centered vertically on desktop, bottom corners on mobile. */}
+
           <div className="pointer-events-none absolute inset-x-4 bottom-5 z-20 flex items-center justify-between md:inset-x-8 md:bottom-auto md:top-1/2 md:-translate-y-1/2">
             <button type="button" onClick={prev} aria-label="Previous slide" className={arrow}>
               <ChevronLeft className="h-6 w-6 transition-transform duration-300 group-hover:-translate-x-0.5" aria-hidden />
@@ -130,7 +127,6 @@ export function HeroSlider({ slides }: Props) {
             </button>
           </div>
 
-          {/* Dots: bottom center. Active = ring, inactive = small grey dot. */}
           <div className="absolute inset-x-0 bottom-9 z-20 flex justify-center gap-3 md:bottom-8" role="group" aria-label="Choose slide">
             {slides.map((s, i) => (
               <button

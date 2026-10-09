@@ -3,13 +3,13 @@ import { Facebook, Instagram, Youtube } from "lucide-react";
 import { site } from "@/data/site";
 import { FooterBadge } from "./FooterBadge";
 
-// ---- Edit footer links here. Each inner array is one group (a gap is shown between groups). ----
+
 const exploreGroups = [
   [["Destinations", "/destinations"], ["Itineraries", "/itineraries"], ["Experiences", "/experiences"]],
   [["Our Story", "/about"], ["Journal", "/journal"], ["FAQs", "/contact#faq"], ["Contact", "/contact"]],
   [["Plan Your Trip", "/plan-your-trip"]],
 ];
-const badgeHeading = "Travel With Purpose"; // not an award claim: edit freely
+const badgeHeading = "Travel With Purpose";
 const badgeText = "Thoughtfully designed journeys across Kenya.";
 
 const heading = "text-lg font-bold uppercase tracking-wide text-[#44453D]";
