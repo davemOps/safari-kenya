@@ -14,11 +14,11 @@ export const metadata: Metadata = {
   openGraph: { title: `Kenya Tours & Safari Travel | ${site.name}`, description, url: "/", siteName: site.name, type: "website", images: [{ url: "/images/hero-kenya.jpg" }] },
   twitter: { card: "summary_large_image", title: `Kenya Tours & Safari Travel | ${site.name}`, description, images: ["/images/hero-kenya.jpg"] },
 };
-export const viewport: Viewport = { themeColor: "#183A2A", width: "device-width", initialScale: 1 };
+export const viewport: Viewport = { themeColor: "#0000", width: "device-width", initialScale: 1 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body>
         <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:bg-white focus:px-4 focus:py-2">Skip to content</a>
         <Navbar items={getNav()} />        <main id="main">{children}</main>
