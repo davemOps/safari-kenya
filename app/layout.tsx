@@ -4,6 +4,8 @@ import { Navbar } from "@/components/navbar/Navbar";
 import { Footer } from "@/components/footer/Footer";
 import { site } from "@/data/site";
 import { getNav } from "@/lib/nav";
+import { ChatBot } from "@/components/widgets/ChatBot";
+import { WhatsAppButton } from "@/components/widgets/WhatsAppButton";
 
 const description = "Tailor-made Kenya tours and safaris: Maasai Mara, Mount Kenya, Nanyuki, Diani, Lamu and more, designed around you.";
 export const metadata: Metadata = {
@@ -14,15 +16,18 @@ export const metadata: Metadata = {
   openGraph: { title: `Kenya Tours & Safari Travel | ${site.name}`, description, url: "/", siteName: site.name, type: "website", images: [{ url: "/images/hero-kenya.jpg" }] },
   twitter: { card: "summary_large_image", title: `Kenya Tours & Safari Travel | ${site.name}`, description, images: ["/images/hero-kenya.jpg"] },
 };
-export const viewport: Viewport = { themeColor: "#0000", width: "device-width", initialScale: 1 };
+export const viewport: Viewport = { themeColor: "#183A2A", width: "device-width", initialScale: 1 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
         <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:bg-white focus:px-4 focus:py-2">Skip to content</a>
-        <Navbar items={getNav()} />        <main id="main">{children}</main>
+        <Navbar items={getNav()} />
+        <main id="main">{children}</main>
         <Footer />
+        <ChatBot />
+        <WhatsAppButton />
       </body>
     </html>
   );

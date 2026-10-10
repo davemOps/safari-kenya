@@ -3,6 +3,7 @@ import { Facebook, Instagram, Youtube } from "lucide-react";
 import { site } from "@/data/site";
 import { FooterBadge } from "./FooterBadge";
 
+import { PrivacyPolicyLink } from "./PrivacyPolicy";
 
 const exploreGroups = [
   [["Destinations", "/destinations"], ["Itineraries", "/itineraries"], ["Experiences", "/experiences"]],
@@ -70,6 +71,7 @@ export function Footer() {
 
       <div className="bg-[#333333] px-5 py-5 text-center text-sm text-[#9A9A9A]">
         © {new Date().getFullYear()} {site.name}. All rights reserved.Developed by Dave.
+        <span aria-hidden className="mx-2">·</span> <PrivacyPolicyLink />
       </div>
     </footer>
   );
