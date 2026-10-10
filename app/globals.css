@@ -2,9 +2,57 @@
 @tailwind components;
 @tailwind utilities;
 
-html { scroll-behavior: smooth; font-family: "Times New Roman", Times, serif; }
-body { font-family: "Times New Roman", Times, serif; background: #F4F0E7; color: #171717; overflow-x: clip; -webkit-font-smoothing: antialiased; }
-button, input, select, textarea { font-family: inherit; }
-::selection { background: #D8C7A3; color: #171717; }
-:focus-visible { outline: 2px solid #A85D3A; outline-offset: 3px; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation: none !important; transition: none !important; } }
+html {
+  scroll-behavior: smooth;
+  font-family: "Times New Roman", Times, serif;
+}
+
+body {
+  font-family: "Times New Roman", Times, serif;
+  background: #F4F0E7;
+  color: #171717;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+/* Phones: scale every rem-based size down a little (text, spacing, icons). */
+@media (max-width: 639px) {
+  html {
+    font-size: 14px;
+  }
+
+  /* 16px minimum stops iPhones from zooming into a field when you tap it */
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
+::selection {
+  background: #D8C7A3;
+  color: #171717;
+}
+
+:focus-visible {
+  outline: 2px solid #A85D3A;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

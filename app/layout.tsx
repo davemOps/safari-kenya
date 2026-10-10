@@ -6,7 +6,7 @@ import { site } from "@/data/site";
 import { getNav } from "@/lib/nav";
 import { ChatBot } from "@/components/widgets/ChatBot";
 import { WhatsAppButton } from "@/components/widgets/WhatsAppButton";
-
+import { Analytics } from "@vercel/analytics/next"
 const description = "Tailor-made Kenya tours and safaris: Maasai Mara, Mount Kenya, Nanyuki, Diani, Lamu and more, designed around you.";
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -28,6 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Footer />
         <ChatBot />
         <WhatsAppButton />
+        <Analytics />
       </body>
     </html>
   );

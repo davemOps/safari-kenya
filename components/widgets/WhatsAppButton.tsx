@@ -9,9 +9,9 @@ export function WhatsAppButton() {
       rel="noopener noreferrer"
       aria-label="Chat with us on WhatsApp"
       title="Chat with us on WhatsApp"
-      className="fixed bottom-5 right-5 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg ring-4 ring-white/70 transition-transform duration-300 hover:scale-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-charcoal"
+      className="fixed bottom-4 right-4 z-40 flex h-[42px] w-[42px] items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg ring-2 ring-white/70 sm:bottom-5 sm:right-5 sm:h-12 sm:w-12 sm:ring-4 transition-transform duration-300 hover:scale-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-charcoal"
     >
-      <MessageCircle className="h-7 w-7" aria-hidden />
+      <MessageCircle className="h-5 w-5 sm:h-6 sm:w-6" aria-hidden />
     </a>
   );
 }
