@@ -1,31 +1,40 @@
 # Safari Kenya
 
-A website for a Kenya tours and safari travel company. I wanted something calmer and more editorial, with big photography, plenty of space, and a clear way to start planning a trip.
+A tours and safari website for a Kenya travel company, designed around big photography, a lot of white space, and one clear goal: making it easy for someone to start planning a trip.
 
+ I wanted something to feel calm and personal, closer to a travel magazine than a booking engine.
 
-## What's on the site
+## What you'll find on the site
 
-- **Home page** with a full-screen slideshow, an intro with video, a "why us" section, destinations, experiences, sample journeys, a journal and an FAQ
-- **Destinations** (16 places, from Nairobi and the Maasai Mara to Lamu and Diani), each with its own page
-- **Experiences** like safari, beach, mountain and culture
-- **Itineraries** with day-by-day plans
-- **Journal** for travel guides and articles
-- **About, Contact and Plan Your Trip** pages
-- **Inquiry form** that sends straight to my inbox
-- **Travel assistant**, a small chat helper that answers questions about destinations
-- **WhatsApp button** that opens a chat with me
-- **Privacy policy** as a popup from the footer
-- A dropdown navbar built from the same data as the pages, so adding a destination updates the menu on its own
+- A full-screen homepage slideshow, an intro with video, and sections for destinations, experiences, sample journeys, the journal and FAQs
+- 16 destination pages, from Nairobi and the Maasai Mara to Lamu and Diani, each with things to do, the best time to go and suggested trip length
+- Experience pages for safari, beach, mountain, culture, honeymoons, family and adventure
+- Itineraries with a day-by-day plan
+- A journal with travel guides
+- About, Contact and Plan Your Trip pages
+- An inquiry form that lands straight in my inbox
+- A travel assistant that answers common questions about destinations, seasons and trip planning
+- A floating WhatsApp button for quick questions
+- A privacy policy that opens as a popup from the footer
+- A navbar with dropdown menus that builds itself from the content, so a new destination appears in the menu automatically
 
 ## Built with
 
 - [Next.js 15](https://nextjs.org/) (App Router) and TypeScript
 - [Tailwind CSS](https://tailwindcss.com/)
-- [Framer Motion](https://www.framer.com/motion/), used sparingly
+- [Framer Motion](https://www.framer.com/motion/) for the slideshow and a few gentle animations
 - [Lucide](https://lucide.dev/) for icons
-- [EmailJS](https://www.emailjs.com/) for the contact form, so there's no backend to run
+- [EmailJS](https://www.emailjs.com/) for the contact form, so there is no server to look after
 
-## Running it locally
+## A few things I cared about
+
+- **Nothing breaks if a photo is missing.** Every image goes through one component that shows a neat "Image coming soon" box instead of a broken picture.
+- **The form is honest.** If email isn't configured, it says so and points people to email or WhatsApp. It never pretends a message was sent. A hidden field also catches most spam bots.
+- **Content lives in one place.** Destinations, journeys, FAQs and contact details are plain data files, so changing the site rarely means touching the design code.
+- **Accessible by default.** Keyboard navigation, a skip link, labelled form fields, and reduced-motion support.
+- **Search-friendly.** Page titles and descriptions, a sitemap and share previews are set up for every page.
+
+## Running it on your computer
 
 You need Node.js 18.18 or newer.
 
@@ -36,51 +45,36 @@ npm install
 npm run dev
 ```
 
-Then open [http://localhost:3000](http://localhost:3000).
+Open [http://localhost:3000](http://localhost:3000) and you're in.
+
 
 
 ## Setting up the contact form
 
-The form sends email through EmailJS.
+put you EmailJs credentials on .env file.
+```
+NEXT_PUBLIC_EMAILJS_SERVICE_ID=
+NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=
+NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=
+```
+
+The first three come from your EmailJS dashboard. 
 
 
-## Changing the content
 
-Most of what you see lives in the `data/` folder, so you rarely need to touch the components:
-
-| File | What it controls |
-| --- | --- |
-| `data/site.ts` | Company name, email, phone, WhatsApp number, location, social links |
-| `data/destinations.ts` | Destination pages and the navbar menu |
-| `data/experiences.ts` | Experience pages |
-| `data/itineraries.ts` | Itineraries and day-by-day plans |
-| `data/journal.ts` | Journal articles |
-| `data/faqs.ts` | FAQ questions and answers |
-| `data/hero.ts` | Homepage slideshow |
-| `data/testimonials.ts` | Guest quotes |
-| `data/images.ts` | Every image path on the site, in one place |
-
-The travel assistant reads from the same files, so it learns new destinations automatically.
-
-## Images
-
-All images are local and live in `public/images`. Their paths are listed in `data/images.ts`.
-
-## Project layout
+## How the project is organised
 
 ```
 app/          pages and routes
 components/   navbar, footer, hero, cards, forms, chat assistant
-data/         all the site content
-lib/          small helpers (SEO, navigation, form sending)
+data/         all the site's content
+lib/          small helpers for SEO, navigation and the form
 public/       images and video
 ```
 
 
+# Licence
 
+All rights reserved. The code, text and design are mine, and the photos belong to their owners. Please don't copy the site as it is. If you're learning and something here helps you, feel free to read through it.
 
-## Licence
-
-All rights reserved. The code, text and design are mine, and the photos belong to their owners. Please don't copy the site as it is. If you're learning and something here helps you, feel free to read it and learn from it.
-
-Built by Dave Macharia
+Built by Dave Macharia.
