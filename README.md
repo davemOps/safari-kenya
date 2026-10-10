@@ -58,7 +58,7 @@ NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=
 NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=
 ```
 
-The first three come from your EmailJS dashboard. 
+ copy these credentials from your EmailJS dashboard. 
 
 
 
