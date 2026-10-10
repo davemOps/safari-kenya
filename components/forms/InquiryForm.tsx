@@ -1,17 +1,28 @@
 "use client";
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { MessageCircle, Send } from "lucide-react";
 import { submitInquiry, type InquiryPayload } from "@/lib/inquiry";
 import { whatsappLink, site } from "@/data/site";
 
 const styles = ["Safari", "Beach", "Honeymoon", "Family", "Adventure", "Culture", "Private Tour", "Group Tour"];
-const field = "w-full border border-forest/25 bg-white px-4 py-3 text-lg focus:border-forest focus:outline-none";
+const field = "w-full rounded-none border border-charcoal/40 bg-white px-4 py-3 text-lg text-charcoal placeholder:text-charcoal/40 transition-colors hover:border-charcoal/70 focus:border-terracotta focus:outline-none focus:ring-1 focus:ring-terracotta";
 const label = "mb-1.5 block text-xs uppercase tracking-[0.2em] text-forest";
 
 type Status = "idle" | "sending" | "sent" | "error" | "notConfigured";
 
+// The next 18 months, e.g. "November 2026". Built after the page loads so it always matches today's date.
+function upcomingMonths(count = 18) {
+  const now = new Date();
+  return Array.from({ length: count }, (_, i) => {
+    const d = new Date(now.getFullYear(), now.getMonth() + i, 1);
+    return d.toLocaleString("en-GB", { month: "long", year: "numeric" });
+  });
+}
+
 export function InquiryForm() {
   const [status, setStatus] = useState<Status>("idle");
+  const [months, setMonths] = useState<string[]>([]);
+  useEffect(() => { setMonths(upcomingMonths()); }, []);
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -19,6 +30,7 @@ export function InquiryForm() {
     const f = new FormData(form);
     const g = (k: string) => String(f.get(k) ?? "").trim();
 
+    // Honeypot: real visitors never see or fill this field; bots often do.
     if (g("website")) { setStatus("sent"); form.reset(); return; }
 
     const payload: InquiryPayload = {
@@ -44,7 +56,7 @@ export function InquiryForm() {
         <div><label className={label} htmlFor="email">Email</label><input id="email" name="email" type="email" required autoComplete="email" className={field} /></div>
         <div><label className={label} htmlFor="phone">Phone</label><input id="phone" name="phone" type="tel" autoComplete="tel" className={field} /></div>
         <div><label className={label} htmlFor="travelers">Number of Travelers</label><input id="travelers" name="travelers" type="number" min={1} className={field} /></div>
-        <div><label className={label} htmlFor="month">Travel Month</label><input id="month" name="month" type="month" className={field} /></div>
+        <div><label className={label} htmlFor="month">Travel Month</label><select id="month" name="month" className={field} defaultValue=""><option value="">Select</option><option>Flexible / not sure yet</option>{months.map((m) => <option key={m}>{m}</option>)}</select></div>
         <div><label className={label} htmlFor="duration">Duration</label>
           <select id="duration" name="duration" className={field} defaultValue=""><option value="">Select</option><option>1–3 days</option><option>4–5 days</option><option>6–7 days</option><option>8–10 days</option><option>10+ days</option></select></div>
         <div><label className={label} htmlFor="budget">Budget</label>
@@ -56,7 +68,7 @@ export function InquiryForm() {
           {styles.map((s) => (
             <label key={s} className="cursor-pointer">
               <input type="checkbox" name="styles" value={s} className="peer sr-only" />
-              <span className="block border border-forest/25 bg-white px-4 py-2 transition-colors peer-checked:border-forest peer-checked:bg-forest peer-checked:text-cream peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-terracotta">{s}</span>
+              <span className="block border border-charcoal/40 bg-white px-4 py-2 transition-colors hover:border-charcoal/70 peer-checked:border-forest peer-checked:bg-forest peer-checked:text-cream peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-terracotta">{s}</span>
             </label>
           ))}
         </div>
@@ -64,7 +76,7 @@ export function InquiryForm() {
       <div><label className={label} htmlFor="destinations">Destinations</label><input id="destinations" name="destinations" placeholder="e.g. Maasai Mara, Diani" className={field} /></div>
       <div><label className={label} htmlFor="message">Message</label><textarea id="message" name="message" rows={5} className={field} /></div>
 
-
+      {/* Honeypot (hidden from people) */}
       <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
         <label htmlFor="website">Leave this field empty</label>
         <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
